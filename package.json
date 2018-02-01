@@ -68,6 +68,8 @@
   },
   "dependencies": {
     "es6-promise": "^4.2.2",
+    "three": "^0.89.0",
+    "three-orbit-controls": "^82.1.0",
     "whatwg-fetch": "^2.0.3"
   }
 }
