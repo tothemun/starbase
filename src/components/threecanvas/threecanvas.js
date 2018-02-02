@@ -1,13 +1,10 @@
 import * as THREE from 'three';
 import OrbitControls from 'three-orbitcontrols';
-import SkyBox from '../skybox/SkyBox';
-import InterestPoint from '../interestpoint/InterestPoint';
-import img from '../../static/images/360_img_01.jpg';
+import Room from '../room/Room';
+import room01 from '../../static/room_01.json';
 
 class ThreeCanvas {
   constructor(props) {
-    this.poi = [];
-
     if (props.el) {
       this.el = props.el;
       if (this.el) {
@@ -40,8 +37,6 @@ class ThreeCanvas {
     this.camera = new THREE.PerspectiveCamera(75, cw / ch, 1, 1100);
     this.camera.position.set(0, 0, 1);
 
-    this.skyBox = new SkyBox(this.scene, img);
-
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enablePan = true;
     this.controls.enableZoom = false;
@@ -49,6 +44,7 @@ class ThreeCanvas {
     this.controls.autoRotateSpeed = 1.5;
     this.controls.center.set(0, 0, 0);
 
+    this.room = new Room(room01, this.scene);
     this.render();
   }
 
@@ -72,13 +68,12 @@ class ThreeCanvas {
     const rayCaster = new THREE.Raycaster();
     rayCaster.setFromCamera(mousePosition, this.camera);
     const intersects = rayCaster.intersectObjects([this.scene.getObjectByName('skybox')], true);
-    const { x, y, z } = intersects[0].point;
-    this.poi.push(new InterestPoint(x, y, z, this.scene));
+    console.log(intersects[0].point);
   }
 
   render() {
     this.renderer.render(this.scene, this.camera);
-    this.poi.map(point => point.render());
+    this.room.render();
 
     requestAnimationFrame(() => this.render());
   }
