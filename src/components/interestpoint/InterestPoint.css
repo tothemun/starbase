@@ -1,8 +1,13 @@
-.text-label {
+.textLabel {
   color: #fff;
-  font-family: "Fira Mono", Monaco, "Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-  margin: -5px 0 0 15px;
+  font-family: sans-serif;
+  margin: -55px 0 0 0;
   pointer-events: none;
+  padding: 9px;
+  font-size: 18px;
+  line-height: 18px;
+  background-color: #272625;
+  border-radius: 4px;
 }
 
 #labelWrapper {

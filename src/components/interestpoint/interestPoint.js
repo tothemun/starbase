@@ -21,7 +21,7 @@ class InterestPoint {
     const material = new THREE.MeshBasicMaterial({ color: 0xFFC13B });
     this.mesh = new THREE.Mesh(geometry, material);
 
-    this.label = new TextLabel('Lebel', this.scene);
+    this.label = new TextLabel(this.label, this.scene);
     this.label.setBoundObject(this.mesh);
     document.getElementById('labelWrapper').appendChild(this.label.element);
 
@@ -43,9 +43,13 @@ class InterestPoint {
     }
 
     if (frustum.containsPoint(this.mesh.position)) {
-      // Display label
-      this.renderLabel();
+      this.label.show();
+    } else {
+      this.label.hide();
     }
+
+    this.renderLabel();
+
 
     const newScale = currentScale + this.scaleSpeed;
 

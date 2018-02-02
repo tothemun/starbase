@@ -4,8 +4,9 @@ class TextLabel {
   constructor(label, scene) {
     this.scene = scene;
     this.element = document.createElement('div');
-    this.element.className = 'text-label';
+    this.element.className = 'textLabel';
     this.element.style.position = 'absolute';
+    this.element.style.visibility = 'hidden';
     this.element.style.width = 100;
     this.element.style.height = 100;
     this.element.innerHTML = label;
@@ -22,6 +23,14 @@ class TextLabel {
 
   setBoundObject(object) {
     this.boundObject = object;
+  }
+
+  hide() {
+    this.element.style.visibility = 'hidden';
+  }
+
+  show() {
+    this.element.style.visibility = 'visible';
   }
 
   updatePosition() {
