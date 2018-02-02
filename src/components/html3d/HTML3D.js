@@ -8,7 +8,7 @@ class HTML3D {
     this.element.style.visibility = 'hidden';
     this.element.style.top = -1000;
     this.element.style.left = -1000;
-    this.element.className = 'html3D';
+    this.element.classList.add('html3D');
 
     this.boundObject = false;
     this.position = new THREE.Vector3(0, 0, 0);
@@ -28,12 +28,12 @@ class HTML3D {
 
   hide() {
     this.element.style.visibility = 'hidden';
-    this.element.style.opacity = 0;
+    this.element.classList.remove('animateIn');
   }
 
   show() {
     this.element.style.visibility = 'visible';
-    this.element.className = 'animateIn';
+    this.element.classList.add('animateIn');
   }
 
   updatePosition() {
