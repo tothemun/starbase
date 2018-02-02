@@ -12,12 +12,20 @@ class Room {
 
     data.points.map((point) => {
       const {
+        body,
+        headline,
+        image,
         label,
         x,
         y,
         z
       } = point;
-      return this.poi.push(new InterestPoint(label, x, y, z, scene));
+      return this.poi.push(new InterestPoint(x, y, z, scene, {
+        body,
+        headline,
+        image,
+        label
+      }));
     });
   }
 

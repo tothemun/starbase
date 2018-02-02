@@ -5,19 +5,28 @@
       "x": -494,
       "y": -27,
       "z": -64,
-      "label": "Bosch Appliances"
+      "label": "Bosch Appliances",
+      "image": "./images/bosch_oven.jpg",
+      "headline": "Bosch Appliances",
+      "body": "Top of the line Bosch Appliances means you can cook amazing meals for you and your friends"
     },
     {
       "x": -266,
       "y": -96,
       "z": 410,
-      "label": "Stone Counters"
+      "label": "Stone Counters",
+      "image": "./images/counter_01.jpg",
+      "headline": "Stone Counters",
+      "body": "Beautiful stone countertops not only look great, but stand up to wear and tear."
     },
     {
       "x": 23,
       "y": -60,
       "z": -494,
-      "label": "Balcony"
+      "label": "Balcony",
+      "image": "./images/balcony_01.jpg",
+      "headline": "Balcony",
+      "body": "Amazing city views from a private balcony overlooking midtown."
     }
   ]
 }

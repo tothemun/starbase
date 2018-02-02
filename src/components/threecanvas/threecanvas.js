@@ -44,7 +44,7 @@ class ThreeCanvas {
     this.controls.enableZoom = false;
     this.controls.autoRotate = true;
     this.controls.autoRotateSpeed = 1.5;
-    this.controls.center.set(0, 0, 0);
+    this.controls.target.set(0, 0, 0);
 
     this.room = new Room(room01, this.scene);
     this.render();
