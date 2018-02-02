@@ -40,8 +40,6 @@ class InterestPoint {
 
     this.scene.add(this.mesh);
     this.mesh.position.set(this.x, this.y, this.z);
-
-    window.addEventListener('click', event => this.onClick(event), false);
   }
 
   render() {
@@ -70,20 +68,12 @@ class InterestPoint {
     this.mesh.scale.set(newScale, newScale, newScale);
   }
 
-  onClick(event) {
-    const mousePosition = new THREE.Vector3(
-      ((event.clientX / window.innerWidth) * 2) - 1,
-      (-(event.clientY / window.innerHeight) * 2) + 1,
-      0.5
-    );
+  showInfoWindow() {
+    this.infoWindow.show();
+  }
 
-    const rayCaster = new THREE.Raycaster();
-    rayCaster.setFromCamera(mousePosition, this.scene.getObjectByName('camera'));
-    const intersects = rayCaster.intersectObjects([this.mesh], true);
-
-    if (intersects[0]) {
-      this.infoWindow.show();
-    }
+  hideInfoWindow() {
+    this.infoWindow.hide();
   }
 }
 

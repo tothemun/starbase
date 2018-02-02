@@ -1,3 +1,5 @@
+import cross from '../../static/images/cross.svg';
+
 class InfoWindow {
   constructor(data) {
     this.createHTML(data);
@@ -19,7 +21,9 @@ class InfoWindow {
     const closeElement = document.createElement('a');
     closeElement.href = '#';
     closeElement.onclick = () => this.hide();
-    closeElement.innerHTML = 'X';
+    const crossElement = document.createElement('img');
+    crossElement.src = cross;
+    closeElement.appendChild(crossElement);
     this.element.appendChild(closeElement);
 
     const content = document.createElement('div');
