@@ -38,6 +38,7 @@ class Room {
 
   onClick(event) {
     const rayCaster = new THREE.Raycaster();
+    let openIndex = null;
     const mousePosition = new THREE.Vector3(
       ((event.clientX / window.innerWidth) * 2) - 1,
       (-(event.clientY / window.innerHeight) * 2) + 1,
@@ -46,14 +47,22 @@ class Room {
 
     rayCaster.setFromCamera(mousePosition, this.scene.getObjectByName('camera'));
 
-    this.poi.map((point) => {
+    for (let i = 0; i < this.poi.length; i++) {
+      const point = this.poi[i];
       if (rayCaster.intersectObjects([point.mesh], true)[0]) {
         point.showInfoWindow();
-        // Close all other windows
+        openIndex = i;
+        break;
       }
+    }
 
-      return null;
-    });
+    if (openIndex !== null) {
+      for (let i = 0; i < this.poi.length; i++) {
+        if (i !== openIndex) {
+          this.poi[i].hideInfoWindow();
+        }
+      }
+    }
   }
 }
 
