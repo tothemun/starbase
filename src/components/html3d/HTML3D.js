@@ -6,9 +6,6 @@ class HTML3D {
     this.element = document.createElement('div');
     this.element.style.position = 'absolute';
     this.element.style.visibility = 'hidden';
-    this.element.style.top = -1000;
-    this.element.style.left = -1000;
-    this.element.classList.add('html3D');
 
     this.boundObject = false;
     this.position = new THREE.Vector3(0, 0, 0);
@@ -43,14 +40,15 @@ class HTML3D {
 
     const coords2d = this.get2DCoords(this.position, this.scene.getObjectByName('camera'));
 
-    this.element.style.left = `${coords2d.x}px`;
-    this.element.style.top = `${coords2d.y}px`;
+    this.element.style.transform = `translate(${coords2d.x}px, ${coords2d.y}px)`;
   }
 
   get2DCoords(position, camera) {
+    const threeCanvas = document.getElementsByClassName('three-canvas')[0];
     const vector = position.project(camera);
-    vector.x = ((vector.x + 1) / 2) * window.innerWidth;
-    vector.y = (-(vector.y - 1) / 2) * window.innerHeight;
+
+    vector.x = ((vector.x + 1) / 2) * threeCanvas.clientWidth;
+    vector.y = (-(vector.y - 1) / 2) * threeCanvas.clientHeight;
 
     return vector;
   }

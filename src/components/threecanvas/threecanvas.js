@@ -17,11 +17,12 @@ class ThreeCanvas {
   initListeners() {
     const self = this.el;
     window.addEventListener('resize', () => this.onResize(), false);
-    self.addEventListener('click', event => this.onClick(event), false);
+    // self.addEventListener('click', event => this.onClick(event), false);
   }
 
   initScene() {
     const self = this.el;
+    console.log(self.clientWidth);
     const cw = self.clientWidth;
     const ch = self.clientHeight;
     const devicePixelRatio = window.devicePixelRatio || 1;

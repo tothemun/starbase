@@ -5,21 +5,4 @@
   bottom: 0;
   left: 0;
   pointer-events: none;
-  transform-origin: 50% 50%;
-
-  .animateIn {
-    animation: fadeIn 250ms ease-in-out;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
