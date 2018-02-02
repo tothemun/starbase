@@ -1,20 +1,27 @@
 import * as THREE from 'three';
-import img from '../../static/images/360_img_01.jpg';
 
 class SkyBox {
-  constructor(props) {
-    this.init();
+  constructor(scene, img) {
+    this.init(scene, img);
   }
 
-  init() {
-    this.geometry = new THREE.SphereBufferGeometry(500, 60, 40);
-    // invert the geometry on the x-axis so that all of the faces point inward
-    this.geometry.scale(-1, 1, 1);
-    this.material = new THREE.MeshBasicMaterial({
+  init(scene, img) {
+    const geometry = new THREE.SphereBufferGeometry(500, 60, 40);
+    geometry.scale(-1, 1, 1);
+    const material = new THREE.MeshBasicMaterial({
       map: new THREE.TextureLoader().load(img)
     });
 
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.mesh = new THREE.Mesh(geometry, material);
+    this.mesh.name = 'skybox';
+
+    scene.add(this.mesh);
+  }
+
+  setImage(newImage) {
+    this.mesh.material = new THREE.MeshBasicMaterial({
+      map: new THREE.TextureLoader().load(newImage)
+    });
   }
 }
 
