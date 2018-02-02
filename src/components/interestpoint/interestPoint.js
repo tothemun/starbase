@@ -23,7 +23,7 @@ class InterestPoint {
 
     this.label = new TextLabel(this.label, this.scene);
     this.label.setBoundObject(this.mesh);
-    document.getElementById('labelWrapper').appendChild(this.label.element);
+    document.getElementById('htmlWrapper').appendChild(this.label.element);
 
     this.scene.add(this.mesh);
     this.mesh.position.set(this.x, this.y, this.z);

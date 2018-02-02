@@ -1,5 +1,17 @@
 .watermark {
-  font-size: responsive 0.8rem 0.95rem;
-  font-range: 30rem 60rem;
-  color: #888;
+  opacity: 0.5;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+
+  img {
+    height: 50px;
+  }
+
+  h5 {
+    font-size: responsive 0.8rem 0.95rem;
+    font-range: 30rem 60rem;
+    color: #888;
+    margin: 0;
+  }
 }
