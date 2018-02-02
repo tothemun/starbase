@@ -18,6 +18,24 @@ class ThreeCanvas {
     const self = this.el;
     window.addEventListener('resize', () => this.onResize(), false);
     // self.addEventListener('click', event => this.onClick(event), false);
+    this.isMouseDown = false;
+    self.onmousedown = () => this.handleMouseDown();
+    self.onmouseup = () => this.handleMouseUp();
+    self.onmousemove = () => this.handleMouseMove();
+  }
+
+  handleMouseDown() {
+    this.isMouseDown = true;
+  }
+
+  handleMouseUp() {
+    this.isMouseDown = false;
+  }
+
+  handleMouseMove() {
+    if (this.isMouseDown) {
+      this.controls.autoRotate = false;
+    }
   }
 
   initScene() {
@@ -44,7 +62,7 @@ class ThreeCanvas {
     this.controls.enablePan = true;
     this.controls.enableZoom = false;
     this.controls.autoRotate = true;
-    this.controls.autoRotateSpeed = 1.5;
+    this.controls.autoRotateSpeed = 0.5;
     this.controls.target.set(0, 0, 0);
 
     this.room = new Room(room01, this.scene);
@@ -77,6 +95,7 @@ class ThreeCanvas {
   render() {
     this.renderer.render(this.scene, this.camera);
     this.room.render();
+    this.controls.update();
 
     requestAnimationFrame(() => this.render());
   }
