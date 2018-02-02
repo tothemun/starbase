@@ -11,8 +11,13 @@ class Room {
     this.skyBox = new SkyBox(scene, data.image);
 
     data.points.map((point) => {
-      const { x, y, z } = point;
-      return this.poi.push(new InterestPoint(x, y, z, scene));
+      const {
+        label,
+        x,
+        y,
+        z
+      } = point;
+      return this.poi.push(new InterestPoint(label, x, y, z, scene));
     });
   }
 

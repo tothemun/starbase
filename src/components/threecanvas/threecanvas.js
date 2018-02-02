@@ -36,6 +36,8 @@ class ThreeCanvas {
 
     this.camera = new THREE.PerspectiveCamera(75, cw / ch, 1, 1100);
     this.camera.position.set(0, 0, 1);
+    this.camera.name = 'camera';
+    this.scene.add(this.camera);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enablePan = true;
