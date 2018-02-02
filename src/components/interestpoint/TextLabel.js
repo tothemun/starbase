@@ -6,6 +6,7 @@ class TextLabel extends HTML3D {
     super(scene);
     this.element.className = 'textLabel';
     this.element.innerHTML = label;
+    document.getElementById('htmlWrapper').appendChild(this.element);
   }
 }
 

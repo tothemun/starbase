@@ -1,25 +1,30 @@
-import HTML3D from '../html3d/HTML3D';
-
-class InfoWindow extends HTML3D {
-  constructor(data, scene) {
-    super(scene);
-    this.setChild(this.createHTML(data));
+class InfoWindow {
+  constructor(data) {
+    this.createHTML(data);
+    document.getElementById('htmlWrapper').appendChild(this.element);
   }
 
   createHTML(data) {
     const { body, headline, image } = data;
 
-    const wrapper = document.createElement('div');
-    wrapper.className = 'infoWrapper';
+    this.element = document.createElement('div');
+    this.element.style.visibility = 'hidden';
+    this.element.className = 'infoWrapper';
 
     const imageElement = document.createElement('img');
     imageElement.className = 'infoImage';
     imageElement.src = image;
-    wrapper.appendChild(imageElement);
+    this.element.appendChild(imageElement);
+
+    const closeElement = document.createElement('a');
+    closeElement.href = '#';
+    closeElement.onclick = () => this.hide();
+    closeElement.innerHTML = 'X';
+    this.element.appendChild(closeElement);
 
     const content = document.createElement('div');
     content.className = 'infoContent';
-    wrapper.appendChild(content);
+    this.element.appendChild(content);
 
     const headerElement = document.createElement('h2');
     headerElement.innerHTML = headline;
@@ -28,8 +33,16 @@ class InfoWindow extends HTML3D {
     const bodyElement = document.createElement('p');
     bodyElement.innerHTML = body;
     content.appendChild(bodyElement);
+  }
 
-    return wrapper;
+  show() {
+    this.element.style.visibility = 'visible';
+    this.element.classList.add('animateIn');
+  }
+
+  hide() {
+    this.element.style.visibility = 'hidden';
+    this.element.classList.remove('animateIn');
   }
 }
 

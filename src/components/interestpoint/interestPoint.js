@@ -31,15 +31,12 @@ class InterestPoint {
 
     this.label = new TextLabel(label, this.scene);
     this.label.setBoundObject(this.mesh);
-    document.getElementById('htmlWrapper').appendChild(this.label.element);
 
     this.infoWindow = new InfoWindow({
       body,
       headline,
       image
-    }, this.scene);
-    this.infoWindow.setBoundObject(this.mesh);
-    document.getElementById('htmlWrapper').appendChild(this.infoWindow.element);
+    });
 
     this.scene.add(this.mesh);
     this.mesh.position.set(this.x, this.y, this.z);
@@ -67,7 +64,6 @@ class InterestPoint {
     }
 
     this.label.updatePosition();
-    this.infoWindow.updatePosition();
 
     const newScale = currentScale + this.scaleSpeed;
 
@@ -84,7 +80,7 @@ class InterestPoint {
     const rayCaster = new THREE.Raycaster();
     rayCaster.setFromCamera(mousePosition, this.scene.getObjectByName('camera'));
     const intersects = rayCaster.intersectObjects([this.mesh], true);
-    console.log(intersects);
+
     if (intersects[0]) {
       this.infoWindow.show();
     }

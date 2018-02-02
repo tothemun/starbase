@@ -6,9 +6,9 @@
   left: 0;
   pointer-events: none;
   transform-origin: 50% 50%;
-  
+
   .animateIn {
-    animation: fadeIn 250ms ease;
+    animation: fadeIn 250ms ease-in-out;
   }
 }
 
